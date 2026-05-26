@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>СОШ №72 им. А. Сыдыкова — Официальный Портал</title>
+    <title>СОШ №72 им. А. Сыдыкова — Официальный Portal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -233,6 +233,57 @@
     <script src="config.js"></script>
 
     <script>
+        const dictionary = {
+            ru: {
+                intro_welcome: "ДОБРО ПОЖАЛОВАТЬ", intro_sub: "В СОШ №72 им. А. СЫДЫКОВА",
+                state_title: "Государственное Учреждение • Министерство Образования и Науки КР",
+                school_name_main: "СОШ №72 ИМ. А. СЫДЫКОВА", school_name_sub: "Средняя общеобразовательная школа • Ленинский район",
+                menu_about: "О школе", menu_history: "История", menu_news: "Новости", menu_stats: "Статистика", menu_teachers: "Педсостав", menu_contacts: "Контакты", menu_gallery: "Галерея",
+                gallery_title: "Фотоархив Школы", gal_back: "← Назад", gal_img1: "Инфраструктура", gal_img2: "IT-классы", gal_img3: "Традиции",
+                about_h: "О школе", history_h: "История", news_h: "Новости", stats_h: "Статистический профиль", teachers_h: "Педагогический состав", contacts_h: "Контакты",
+                card_head: "Руководство", card_dir: "Директор", card_dir_name: "Назаркулова Дамира Алтыбаевна", card_lang_h: "Контингент:",
+                ownership_lbl: "Форма собственности:", ownership_val: "Муниципальная", ach_section_title: "Наши главные достижения", btn_back_main: "← Назад к главной",
+                dept_gumanitarii: "Кафедра гуманитарных наук", dept_estestvennye: "Кафедра естественных наук", dept_fizikomatem: "Физико-математическая кафедра", dept_obshya: "Общеобразовательная кафедра", dept_iskystva: "Кафедра искусств и спорта", dept_nacalnyhclass: "Кафедра начальных классов",
+                about_text: `<p class="lead">Муниципальное учреждение «Средняя общеобразовательная школа № 72 имени Абдыкерима Сыдыкова Ленинского района г. Бишкек» — крупный образовательный комплекс столицы.</p><p>На сегодняшний день в школе обучается 2 970 учеников в 100 учебных группах. Обучение ведется в две смены по кыргызскому и русскому направлениям.</p>`,
+                card_lang_body: `<li><strong>Русский язык:</strong> 60 групп</li><li><strong>Кыргызский язык:</strong> 40 групп</li>`,
+                history_text: `<p>Школа с гордостью носит имя Абдыкерима Сыдыкова — выдающегося кыргызского общественного и государственного деятеля, одного из ключевых отцов-основателей кыргызской государственности в XX веке.</p>`,
+                contacts_body: `<h5>Приемная комиссия</h5><hr><p class="small"><strong>Адрес:</strong> г. Бишкек, Ленинский р-н, микрорайон Джал-23, дом 1-204</p><p class="small"><strong>Телефон:</strong> 0 (312) 25-55-95</p>`,
+                footer_text: "© 2026 СОШ №72 им. А. Сыдыкова. Официальный веб-ресурс."
+            },
+            kg: {
+                intro_welcome: "КОШ КЕЛДИҢИЗДЕР", intro_sub: "№72 ОРТО МЕКТЕБИНЕ",
+                state_title: "Мамлекеттик Мекеме • КР Билим берүү жана илим министрлиги",
+                school_name_main: "№72 ОРТО МЕКТЕБИ", school_name_sub: "Абдыкерим Сыдыков атындагы орто мектеп",
+                menu_about: "Мектеп жөнүндө", menu_history: "Тарыхы", menu_news: "Жаңылыктар", menu_stats: "Статистика", menu_teachers: "Мугалимдер", menu_contacts: "Байланыштар", menu_gallery: "Галерея",
+                gallery_title: "Мектептин Сүрөт архиви", gal_back: "← Артка", gal_img1: "Инфраструктура", gal_img2: "IT-класстар", gal_img3: "Каада-салттар",
+                about_h: "Мектеп жөнүндө", history_h: "Тарыхы", news_h: "Жаңылыктар", stats_h: "Статистика", teachers_h: "Мугалимдер курамы", contacts_h: "Байланыштар",
+                card_head: "Жетекчилик", card_dir: "Директор", card_dir_name: "Назаркулова Дамира Алтыбаевна", card_lang_h: "Тилдер:",
+                ownership_lbl: "Менчик формасы:", ownership_val: "Муниципалдык", ach_section_title: "Мектептин негизги жетишкендиктери", btn_back_main: "← Башкы бетке",
+                dept_gumanitarii: "Гуманитардык илимдер кафедрасы", dept_estestvennye: "Табигый илимдер кафедрасы", dept_fizikomatem: "Физика-математикалык кафедрасы", dept_obshya: "Жалпы билим берүү кафедрасы", dept_iskystva: "Искусство жана спорт кафедрасы", dept_nacalnyhclass: "Башталгыч класстар кафедрасы",
+                about_text: `<p class="lead">«Абдыкерим Сыдыков атындагы № 72 орто мектеби» муниципалдык мекемеси борбордун ири билим берүү комплекси болуп саналат.</p>`,
+                card_lang_body: `<li><strong>Орус тили:</strong> 60 тайпа</li><li><strong>Кыргыз тили:</strong> 40 тайпа</li>`,
+                history_text: `<p>Мектеп кыргыз мамлекеттүүлүгүнүн негиздөөчүлөрүнүн бири Абдыкерим Сыдыковдун ысымын сыймыктануу менен алып жүрөт.</p>`,
+                contacts_body: `<h5>Кабыл алуу комиссиясы</h5><hr><p class="small"><strong>Дареги:</strong> Бишкек ш., Жал-23 кичи району</p><p class="small"><strong>Телефону:</strong> 0 (312) 25-55-95</p>`,
+                footer_text: "© 2026 №72 А. Сыдыков атындагы орто мектеби. Расмий веб-ресурс."
+            },
+            en: {
+                intro_welcome: "WELCOME", intro_sub: "TO SECONDARY SCHOOL №72",
+                state_title: "State Institution • Ministry of Education and Science of the KR",
+                school_name_main: "SECONDARY SCHOOL №72", school_name_sub: "Named after A. Sydykov • Leninsky District",
+                menu_about: "About Us", menu_history: "History", menu_news: "News", menu_stats: "Statistics", menu_teachers: "Faculty", menu_contacts: "Contacts", menu_gallery: "Gallery",
+                gallery_title: "School Photo Archive", gal_back: "← Back", gal_img1: "Infrastructure", gal_img2: "IT Labs", gal_img3: "Traditions",
+                about_h: "About School", history_h: "History", news_h: "News", stats_h: "Statistical Profile", teachers_h: "Teaching Staff", contacts_h: "Contacts",
+                card_head: "Administration", card_dir: "Principal", card_dir_name: "Nazarkulova Damira Altybaevna", card_lang_h: "Students:",
+                ownership_lbl: "Ownership Form:", ownership_val: "Municipal", ach_section_title: "Main Achievements", btn_back_main: "← Back to Main",
+                dept_gumanitarii: "Department of Humanities", dept_estestvennye: "Department of Natural Sciences", dept_fizikomatem: "Physics & Mathematics Department", dept_obshya: "Department of General Education", dept_iskystva: "Department of Arts & Sports", dept_nacalnyhclass: "Primary School Department",
+                about_text: `<p class="lead">Municipal Institution Secondary School № 72 named after A. Sydykov is a large educational complex in Bishkek.</p>`,
+                card_lang_body: `<li><strong>Russian:</strong> 60 groups</li><li><strong>Kyrgyz:</strong> 40 groups</li>`,
+                history_text: `<p>The school proudly bears the name of Abdykerim Sydykov, one of the founding fathers of Kyrgyz statehood.</p>`,
+                contacts_body: `<h5>Admission Committee</h5><hr><p class="small"><strong>Address:</strong> Bishkek, Jal-23 microdistrict</p><p class="small"><strong>Phone:</strong> 0 (312) 25-55-95</p>`,
+                footer_text: "© 2026 School №72. Official web-resource."
+            }
+        };
+
         let currentActiveLanguage = 'ru';
 
         function switchLanguage(lang, buttonElement) {
@@ -247,13 +298,16 @@
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active-lang'));
             if(buttonElement) { buttonElement.classList.add('active-lang'); }
 
-            injectNewsCards();
-            injectAchievementsCards();
+            // Безопасный вызов инжекции данных
+            if (typeof SCHOOL_DATA_CONFIG !== 'undefined') {
+                injectNewsCards();
+                injectAchievementsCards();
+            }
         }
 
         function injectNewsCards() {
             const container = document.getElementById('news-injected-container');
-            if (!container) return;
+            if (!container || !SCHOOL_DATA_CONFIG.news) return;
             container.innerHTML = '';
             
             const newsObj = SCHOOL_DATA_CONFIG.news[currentActiveLanguage] || {};
@@ -272,7 +326,7 @@
 
         function injectAchievementsCards() {
             const container = document.getElementById('achievements-injected-container');
-            if (!container) return;
+            if (!container || !SCHOOL_DATA_CONFIG.achievements) return;
             container.innerHTML = '';
 
             const achObj = SCHOOL_DATA_CONFIG.achievements[currentActiveLanguage] || {};
@@ -318,17 +372,19 @@
             const grid = document.getElementById('dynamic-teachers-grid');
             grid.innerHTML = '';
 
-            const teachers = SCHOOL_DATA_CONFIG.teachers[deptId] || [];
-            teachers.forEach((name, index) => {
-                grid.innerHTML += `
-                    <div class="col-sm-6 col-md-4 col-lg-3">
-                        <div class="teacher-profile-card">
-                            <img src="pedagogi/${deptId}/${index + 1}.jpg" onerror="this.src='photo.jpg';" class="teacher-avatar-img">
-                            <h6 class="fw-bold mb-1">${name}</h6>
-                            <p class="small text-muted mb-0">Преподаватель</p>
-                        </div>
-                    </div>`;
-            });
+            if (typeof SCHOOL_DATA_CONFIG !== 'undefined' && SCHOOL_DATA_CONFIG.teachers) {
+                const teachers = SCHOOL_DATA_CONFIG.teachers[deptId] || [];
+                teachers.forEach((name, index) => {
+                    grid.innerHTML += `
+                        <div class="col-sm-6 col-md-4 col-lg-3">
+                            <div class="teacher-profile-card">
+                                <img src="pedagogi/${deptId}/${index + 1}.jpg" onerror="this.src='photo.jpg';" class="teacher-avatar-img">
+                                <h6 class="fw-bold mb-1">${name}</h6>
+                                <p class="small text-muted mb-0">Преподаватель</p>
+                            </div>
+                        </div>`;
+                });
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -347,7 +403,10 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        window.addEventListener('DOMContentLoaded', () => { switchLanguage('ru', document.querySelector('.lang-btn')); });
+        window.addEventListener('DOMContentLoaded', () => { 
+            switchLanguage('ru', document.querySelector('.lang-btn')); 
+        });
+        
         window.addEventListener('scroll', revealSections);
         function revealSections() {
             var reveals = document.querySelectorAll('.reveal');
