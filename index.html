@@ -215,11 +215,10 @@
             </div>
         </section>
 
-        <!-- ПЕДСОСТАВ С ДОБАВЛЕННОЙ КАРТОЧКОЙ АДМИНИСТРАЦИИ -->
+        <!-- ПЕДСОСТАВ -->
         <section id="teachers" class="container section-padding reveal">
             <h2 class="page-header" data-key="teachers_h">Педагогический состав</h2><div class="gold-divider"></div>
             <div class="row g-4">
-                <!-- 🌟 СЮДА ПЕРЕЕХАЛА АДМИНИСТРАЦИЯ КАК ОТДЕЛЬНАЯ КАФЕДРА 🌟 -->
                 <div class="col-md-4">
                     <div class="dept-selection-card" style="border-top-color: var(--muni-green);" onclick="openDepartmentView('admistatiya')">
                         <i class="bi bi-person-gear"></i>
@@ -283,7 +282,7 @@
                 dept_gumanitarii: "Гуманитардык илимдер кафедрасы", dept_estestvennye: "Табигый илимдер кафедрасы", dept_fizikomatem: "Физика-математикалык кафедрасы", dept_obshya: "Жалпы билим берүү кафедрасы", dept_iskystva: "Искусство жана спорт кафедрасы", dept_nacalnyhclass: "Башталгыч класстар кафедрасы",
                 about_text: `<p class="lead">«Абдыкерим Сыдыков атындагы № 72 орто мектеби» муниципалдык мекемеси борбордук ири билим берүү комплекси болуп саналат.</p>`,
                 card_lang_body: `<li><strong>Орус тили:</strong> 60 тайпа</li><li><strong>Кыргыз тили:</strong> 40 тайпа</li>`,
-                history_text: `<p>Мектеп кыргыз мамлекеттүүлүгүнүн негиздөөчүлөрүнйн бири Абдыкерим Сыдыковдун ысымын сыймыктануу менен алып жүрөт.</p>`,
+                history_text: `<p>Мектеп кыргыз мамлекеттүүлүгүнүн негиздөөчүлөрүнүн бири Абдыкерим Сыдыковдун ысымын сыймыктануу менен алып жүрөт.</p>`,
                 contacts_body: `<h5>Кабыл алуу комиссиясы</h5><hr><p class="small"><strong>Дареги:</strong> Бишкек ш., Жал-23 кичи району</p><p class="small"><strong>Телефону:</strong> 0 (312) 25-55-95</p>`,
                 footer_text: "© 2026 №72 А. Сыдыков атындагы орто мектеби. Расмий веб-ресурс."
             },
@@ -368,7 +367,13 @@
             document.getElementById('dynamic-news-title').innerText = item.title;
             document.getElementById('dynamic-news-date').innerText = item.date;
             document.getElementById('dynamic-news-content').innerHTML = item.content;
-            document.getElementById('dynamic-news-img').src = `news/${id}.jpg`;
+            
+            // Если это новость про последний звонок, берем фотку из novosti/1.jpg
+            if(id === 'last_bell_2026') {
+                document.getElementById('dynamic-news-img').src = `novosti/1.jpg`;
+            } else {
+                document.getElementById('dynamic-news-img').src = `photo.jpg`;
+            }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -394,15 +399,18 @@
 
             if (typeof SCHOOL_DATA_CONFIG !== 'undefined' && SCHOOL_DATA_CONFIG.teachers) {
                 const teachers = SCHOOL_DATA_CONFIG.teachers[deptId] || [];
-                
-                // Проверяем, админы это или обычные учителя для подписи роли
                 const roleText = (deptId === 'admistatiya') ? 'Администрация школы' : 'Преподаватель';
 
                 teachers.forEach((name, index) => {
+                    // УМНЫЙ ХАК: Если открыли администрацию, тянем фотки из папки novosti/!
+                    const imagePath = (deptId === 'admistatiya') 
+                        ? `novosti/${index + 1}.jpg` 
+                        : `pedagogi/${deptId}/${index + 1}.jpg`;
+
                     grid.innerHTML += `
                         <div class="col-sm-6 col-md-4 col-lg-3">
                             <div class="teacher-profile-card">
-                                <img src="pedagogi/${deptId}/${index + 1}.jpg" onerror="this.src='photo.jpg';" class="teacher-avatar-img">
+                                <img src="${imagePath}" onerror="this.src='photo.jpg';" class="teacher-avatar-img">
                                 <h6 class="fw-bold mb-1">${name}</h6>
                                 <p class="small text-muted mb-0">${roleText}</p>
                             </div>
