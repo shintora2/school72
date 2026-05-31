@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>СОШ №72 им. А. Сыдыкова — Официальный Portal</title>
+    <title>СОШ №72 им. А. Сыдыкова — Официальный Портал</title>
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Иконки -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Академические шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
@@ -121,6 +124,7 @@
         </div>
     </div>
 
+    <!-- ЭКРАН ИЗОЛИРОВАННОГО ДОСТИЖЕНИЯ -->
     <div id="isolated-achievement-page" class="container d-none py-5" style="min-height: 70vh;">
         <button class="btn btn-outline-success px-4 mb-4" onclick="showMainPage()" style="border-radius: 0;" data-key="btn_back_main">← Назад</button>
         <div class="row g-5 align-items-start">
@@ -136,6 +140,7 @@
         </div>
     </div>
 
+    <!-- ЭКРАН ИЗОЛИРОВАННОЙ НОВОСТИ -->
     <div id="isolated-news-page" class="container d-none py-5" style="min-height: 70vh;">
         <button class="btn btn-outline-success px-4 mb-4" onclick="showMainPage()" style="border-radius: 0;" data-key="btn_back_main">← Назад</button>
         <div class="row g-5 align-items-start">
@@ -146,11 +151,12 @@
                 <div id="dynamic-news-content" class="lh-lg" style="text-align: justify;"></div>
             </div>
             <div class="col-lg-4">
-                <div class="border p-2 bg-white shadow-sm"><img src="photo.jpg" class="w-100"></div>
+                <div class="border p-2 bg-white shadow-sm"><img src="photo.jpg" id="dynamic-news-img" class="w-100" onerror="this.src='photo.jpg';"></div>
             </div>
         </div>
     </div>
 
+    <!-- ЭКРАН ИЗОЛИРОВАННОЙ КАФЕДРЫ -->
     <div id="isolated-dept-page" class="container d-none py-5" style="min-height: 70vh;">
         <button class="btn btn-outline-success px-4 mb-4" onclick="showMainPage()" style="border-radius: 0;" data-key="btn_back_main">← Назад</button>
         <h2 class="page-header" id="dynamic-dept-title">Название кафедры</h2>
@@ -158,6 +164,7 @@
         <div class="row g-4" id="dynamic-teachers-grid"></div>
     </div>
 
+    <!-- ГАЛЕРЕЯ -->
     <div id="pure-gallery-page" class="container d-none py-5" style="min-height: 60vh;">
         <h2 class="page-header text-center" data-key="gallery_title">Фотоархив</h2>
         <div class="gold-divider mx-auto mb-5"></div>
@@ -169,6 +176,7 @@
         <div class="text-center mt-5"><button class="btn btn-success px-4" onclick="showMainPage()" data-key="gal_back">← Назад</button></div>
     </div>
 
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
     <div id="main-content-scrollable-page">
         <section class="hero"><div class="container text-center"><h1 class="academic-font">Scientia et Virtus</h1></div></section>
 
@@ -185,6 +193,12 @@
                         <ul class="small list-unstyled lh-lg m-0" data-key="card_lang_body"></ul>
                     </div>
                 </div>
+            </div>
+
+            <!-- 🌟 НОВЫЙ РАЗДЕЛ: АДМИНИСТРАЦИЯ ШКОЛЫ 🌟 -->
+            <div class="mt-5 pt-3">
+                <h4 class="fw-bold mb-3" data-key="admin_section_h"><i class="bi bi-person-gear text-success me-2"></i>Административный состав</h4>
+                <div class="row g-4" id="administration-injected-container"></div>
             </div>
         </section>
 
@@ -230,6 +244,7 @@
 
     <footer><div class="container text-center"><p class="m-0" data-key="footer_text"></p></div></footer>
 
+    <!-- ПОДКЛЮЧАЕМ КОНФИГ -->
     <script src="config.js"></script>
 
     <script>
@@ -243,6 +258,7 @@
                 about_h: "О школе", history_h: "История", news_h: "Новости", stats_h: "Статистический профиль", teachers_h: "Педагогический состав", contacts_h: "Контакты",
                 card_head: "Руководство", card_dir: "Директор", card_dir_name: "Назаркулова Дамира Алтыбаевна", card_lang_h: "Контингент:",
                 ownership_lbl: "Форма собственности:", ownership_val: "Муниципальная", ach_section_title: "Наши главные достижения", btn_back_main: "← Назад к главной",
+                admin_section_h: "Административный состав",
                 dept_gumanitarii: "Кафедра гуманитарных наук", dept_estestvennye: "Кафедра естественных наук", dept_fizikomatem: "Физико-математическая кафедра", dept_obshya: "Общеобразовательная кафедра", dept_iskystva: "Кафедра искусств и спорта", dept_nacalnyhclass: "Кафедра начальных классов",
                 about_text: `<p class="lead">Муниципальное учреждение «Средняя общеобразовательная школа № 72 имени Абдыкерима Сыдыкова Ленинского района г. Бишкек» — крупный образовательный комплекс столицы.</p><p>На сегодняшний день в школе обучается 2 970 учеников в 100 учебных группах. Обучение ведется в две смены по кыргызскому и русскому направлениям.</p>`,
                 card_lang_body: `<li><strong>Русский язык:</strong> 60 групп</li><li><strong>Кыргызский язык:</strong> 40 групп</li>`,
@@ -259,8 +275,9 @@
                 about_h: "Мектеп жөнүндө", history_h: "Тарыхы", news_h: "Жаңылыктар", stats_h: "Статистика", teachers_h: "Мугалимдер курамы", contacts_h: "Байланыштар",
                 card_head: "Жетекчилик", card_dir: "Директор", card_dir_name: "Назаркулова Дамира Алтыбаевна", card_lang_h: "Тилдер:",
                 ownership_lbl: "Менчик формасы:", ownership_val: "Муниципалдык", ach_section_title: "Мектептин негизги жетишкендиктери", btn_back_main: "← Башкы бетке",
+                admin_section_h: "Администрациялык курам",
                 dept_gumanitarii: "Гуманитардык илимдер кафедрасы", dept_estestvennye: "Табигый илимдер кафедрасы", dept_fizikomatem: "Физика-математикалык кафедрасы", dept_obshya: "Жалпы билим берүү кафедрасы", dept_iskystva: "Искусство жана спорт кафедрасы", dept_nacalnyhclass: "Башталгыч класстар кафедрасы",
-                about_text: `<p class="lead">«Абдыкерим Сыдыков атындагы № 72 орто мектеби» муниципалдык мекемеси борбордун ири билим берүү комплекси болуп саналат.</p>`,
+                about_text: `<p class="lead">«Абдыкерим Сыдыков атындагы № 72 орто мектеби» муниципалдык мекемеси борбордук ири билим берүү комплекси болуп саналат.</p>`,
                 card_lang_body: `<li><strong>Орус тили:</strong> 60 тайпа</li><li><strong>Кыргыз тили:</strong> 40 тайпа</li>`,
                 history_text: `<p>Мектеп кыргыз мамлекеттүүлүгүнүн негиздөөчүлөрүнүн бири Абдыкерим Сыдыковдун ысымын сыймыктануу менен алып жүрөт.</p>`,
                 contacts_body: `<h5>Кабыл алуу комиссиясы</h5><hr><p class="small"><strong>Дареги:</strong> Бишкек ш., Жал-23 кичи району</p><p class="small"><strong>Телефону:</strong> 0 (312) 25-55-95</p>`,
@@ -275,11 +292,12 @@
                 about_h: "About School", history_h: "History", news_h: "News", stats_h: "Statistical Profile", teachers_h: "Teaching Staff", contacts_h: "Contacts",
                 card_head: "Administration", card_dir: "Principal", card_dir_name: "Nazarkulova Damira Altybaevna", card_lang_h: "Students:",
                 ownership_lbl: "Ownership Form:", ownership_val: "Municipal", ach_section_title: "Main Achievements", btn_back_main: "← Back to Main",
+                admin_section_h: "Administration Staff",
                 dept_gumanitarii: "Department of Humanities", dept_estestvennye: "Department of Natural Sciences", dept_fizikomatem: "Physics & Mathematics Department", dept_obshya: "Department of General Education", dept_iskystva: "Department of Arts & Sports", dept_nacalnyhclass: "Primary School Department",
                 about_text: `<p class="lead">Municipal Institution Secondary School № 72 named after A. Sydykov is a large educational complex in Bishkek.</p>`,
                 card_lang_body: `<li><strong>Russian:</strong> 60 groups</li><li><strong>Kyrgyz:</strong> 40 groups</li>`,
                 history_text: `<p>The school proudly bears the name of Abdykerim Sydykov, one of the founding fathers of Kyrgyz statehood.</p>`,
-                contacts_body: `<h5>Admission Committee</h5><hr><p class="small"><strong>Address:</strong> Bishkek, Jal-23 microdistrict</p><p class="small"><strong>Phone:</strong> 0 (312) 25-55-95</p>`,
+                contacts_body: `<h5>Admission Committee</h5><hr><p class="small"><strong>Address:</strong> Bishkek, Leninsky district, Jal-23 microdistrict</p><p class="small"><strong>Phone:</strong> 0 (312) 25-55-95</p>`,
                 footer_text: "© 2026 School №72. Official web-resource."
             }
         };
@@ -298,11 +316,29 @@
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active-lang'));
             if(buttonElement) { buttonElement.classList.add('active-lang'); }
 
-            // Безопасный вызов инжекции данных
             if (typeof SCHOOL_DATA_CONFIG !== 'undefined') {
+                injectAdministrationCards();
                 injectNewsCards();
                 injectAchievementsCards();
             }
+        }
+
+        // 🌟 ДИНАМИЧЕСКИЙ ВЫВОД АДМИНИСТРАЦИИ 🌟
+        function injectAdministrationCards() {
+            const container = document.getElementById('administration-injected-container');
+            if (!container || !SCHOOL_DATA_CONFIG.administration) return;
+            container.innerHTML = '';
+
+            SCHOOL_DATA_CONFIG.administration.forEach((role, index) => {
+                container.innerHTML += `
+                    <div class="col-md-6 col-lg-4">
+                        <div class="teacher-profile-card">
+                            <img src="pedagogi/admistatiya/${index + 1}.jpg" onerror="this.src='photo.jpg';" class="teacher-avatar-img">
+                            <h6 class="fw-bold mb-1">${role}</h6>
+                            <p class="small text-muted mb-0">Администрация школы</p>
+                        </div>
+                    </div>`;
+            });
         }
 
         function injectNewsCards() {
@@ -349,6 +385,7 @@
             document.getElementById('dynamic-news-title').innerText = item.title;
             document.getElementById('dynamic-news-date').innerText = item.date;
             document.getElementById('dynamic-news-content').innerHTML = item.content;
+            document.getElementById('dynamic-news-img').src = `news/${id}.jpg`;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
